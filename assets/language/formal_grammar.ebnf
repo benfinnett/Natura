@@ -1,0 +1,68 @@
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<escape-sequence> ::= "\n" | "\t" | "\b" | "\r" | "\f" | "\'" | "\"" | "\\"
+<letter> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j"
+           | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t"
+           | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D"
+           | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+           | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X"
+           | "Y" | "Z"
+
+<type> ::= "integer" | "boolean" | "string"
+<int> ::= <digit> { <digit> }
+<bool> ::= "true" | "false"
+<string> ::= '"' <char> { <char> } '"'
+<char> ::= <ascii-character> | <escape-sequence>
+
+<comment> ::= "//" { <ascii-character> }
+
+<variable-declaration> ::= "set" <variable-declaration-name> "as" <type> "to" <expression>
+<variable-declaration-name> ::= '"' <variable> '"'
+<variable> ::= <letter> { <letter> | <digit> }
+
+<expression> ::= <variable> | <int> | <bool> | <string> | <operation> 
+<operation> ::= <expression> <operator> <expression>
+<operator> ::= "+"
+             | "-"
+             | "*"
+             | "/" 
+
+<condition-operator> ::= "and" 
+                       | "or" 
+                       | "=" 
+                       | "!=" 
+                       | ">" 
+                       | "<"
+                       | ">=" 
+                       | "<="
+<condition> ::= <expression> <condition-operator> <expression>
+<condition-statement> ::= <condition> { <condition-operator> <condition> }
+<if-statement> ::= "if" <condition-statement> "then" <body> [ "else" <body> ]
+
+<statement> ::= <statement-options> [ <comment> ]
+<statement-options> ::= <variable-declaration>
+                      | <function-declaration>
+                      | <function-invocation>
+                      | <function-invocation-with-assignment>
+                      | <function-return-statement>
+                      | <input-statement>
+                      | <output-statement>
+                      | <expression>
+                      | <if-statement>
+                      | <while-loop>
+                      | <comment>
+
+<while-loop> ::= "while" <condition-statement> "then" <body>
+<condition> ::= <expression>
+
+<function-declaration> ::= "define" <function-name> [ <params> ] "that" <body>
+<params> ::= "with parameters" <variable-declaration-name> "as" <type> { "," <variable-declaration-name> "as" <type> }
+<function-invocation> ::= "call" <function-name> { "using" <arguments> }
+<function-invocation-with-assignment> ::= <function-invocation> "set" <variable-declaration-name> "to returned value"
+<function-name> ::= '"' <function> '"' 
+<function> ::= <letter> { <letter> | <digit> }
+<body> ::= "{" { <statement> } "}"
+<arguments> ::= <expression> { "," <expression> }
+<function-return-statement> ::= "return" <expression>
+
+<input-statement> ::= "input to" <variable-declaration-name> "as" <type>
+<output-statement> ::= "output" <expression>

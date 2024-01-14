@@ -1,0 +1,4 @@
+Set "x" as integer to 10
+Set "y" as integer to 5
+Set "xplusy" as integer to x + y
+Output xplusy

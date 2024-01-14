@@ -1,0 +1,17 @@
+set "x" as integer to 10
+set "isValid" as boolean to age >= 18
+let "y" be the string "Hello!"
+output "Hello World!"
+Say "Hello world!"
+a + b
+if temp > 30 and sun = true then {
+call addNumbers using 5, 10
+input to "userInput" as string
+while i <= 100 then {
+define "multiply" with parameters "a" as integer, "b" as integer that {
+    return a * b
+}
+call getUsername with ID as integer setting "var" to returned value
+else {
+// This is a comment
+set "x" as integer to 10 // Inline comment

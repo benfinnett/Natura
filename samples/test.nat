@@ -1,0 +1,6 @@
+define "multiply" with parameters "a" as integer, "b" as integer that {
+    return a * b
+}
+
+call multiply with 2, 6 set "result" to returned value
+output result

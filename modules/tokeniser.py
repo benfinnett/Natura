@@ -15,7 +15,7 @@ class Tokeniser:
         with open('./assets/language/tokens.json') as file:
             self.token_list = json.load(file)
 
-    def parse_json(self, json_string: str) -> list[dict[str, str]]:
+    def parse_json(self, json_string: str) -> list[dict[str, str]] | dict[str, str]:
         """Parses a JSON string (the output from OpenAI's ChatGPT model) into a list of dictionaries
         representing the token stream.
 

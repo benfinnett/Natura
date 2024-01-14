@@ -95,6 +95,9 @@ class Tokeniser:
         token_names = list(self.token_list['keywords'].values()) + self.token_list['nonTerminals']
         invalid_token_indices = []
         for i, token in enumerate(token_list):
-            if token['token_type'] not in token_names:
+            token_type = token.get('token_type', None)
+            if not token_type:
+                raise CompilerError(f'Unable to validate token {i}: No valid token type for token {token}')
+            elif token['token_type'] not in token_names:
                 invalid_token_indices.append(i)
         return invalid_token_indices

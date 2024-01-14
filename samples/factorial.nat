@@ -1,0 +1,25 @@
+define a function "factorial" with parameters "n" as an integer that {
+    if n < 0 then {
+        return -1 // Undefined
+    }
+
+    if n = 0 then {
+        return 1
+    }
+
+    set "result" as integer to 1
+
+    while n > 0 then {
+        set total to total * n 
+        set n to n - 1
+    }
+
+    return result
+}
+
+input to "number" as integer
+call factorial using number setting "numberFactorial" to the returned value
+output "The factorial of "
+output number
+output " is "
+output numberFactorial 

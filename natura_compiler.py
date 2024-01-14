@@ -40,7 +40,7 @@ def read_natura_file(path: str) -> list[str]:
     
     return data
 
-def main(output_filename: str, file_path: str) -> None:
+def main(file_path: str) -> None:
     PERSIST_CONSOLE = True
 
     print('Starting Natura Compiler...')
@@ -69,19 +69,19 @@ def main(output_filename: str, file_path: str) -> None:
     
     print('Building C code...')
     c_code = generate_c(token_stream, api_key, PERSIST_CONSOLE)
-    build_executabe(c_code, output_filename)
+    build_executabe(c_code, file_path)
     print('Executable built.')
 
 if __name__ == '__main__':
     # Get .nat file name from command line arguments
     if len(sys.argv) > 1:
         nat_file_path = sys.argv[1]
-        nat_filename, extension = os.path.basename(nat_file_path).split('.')
+        extension = os.path.splitext(nat_file_path)[1]
 
-        if extension != 'nat':
+        if extension != '.nat':
             raise CompilerError('File extension must be .nat')
     else:
         raise CompilerError('No .nat file path provided.')
     
     # Run program
-    main(nat_filename, nat_file_path)
+    main(nat_file_path)

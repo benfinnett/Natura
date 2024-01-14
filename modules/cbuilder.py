@@ -39,17 +39,24 @@ def generate_c(token_stream: list[dict[str, str]], api_key: str, persist_console
     
     return response_content    
 
-def build_executabe(c_code: str, file_name: str) -> None:
+def build_executabe(c_code: str, file_path: str) -> None:
     """Builds a C executable from C code using gcc.
 
     Args:
         c_code (str): The textual C code to compile.
         file_name (str): The file name of the executable.
     """
-    file_path = f'./out/{file_name}'
+    root, filename = os.path.split(file_path)
+    filename = os.path.splitext(filename)[0]
+    output_directory = os.path.join(root, 'out')
+
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+    
+    file_path = os.path.join(output_directory, filename)
 
     with open(file_path + '.c', 'w') as file:
         file.write(c_code)
 
-    os.system(f'gcc -o {file_path}.exe {file_path}.c')
+    os.system(f'gcc -o "{file_path}.exe" "{file_path}.c"')
     os.remove(file_path + '.c')

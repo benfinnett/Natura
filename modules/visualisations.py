@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-# Creating a DataFrame with all the provided data
+# Creating a DataFrame with all the provided data from testing
 all_data = {
     'Prompt ID': range(1, 18),
     'Fastest Time (s) ChatGPT': [2.837, 3.124, 3.192, 1.531, 1.852, 1.201, 3.845, 2.462, 2.468, 1.984,

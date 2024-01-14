@@ -14,6 +14,8 @@ You can also perform:
 `pip install -r requirements.txt`
 to install the Python dependancies through pip.
 
+You must also create an `api_key.txt` file in the `assets` directory containing nothing but your OpenAI [API key](https://platform.openai.com/api-keys).
+
 # Building from VS Code
 If you want to build your Natura code directly from VS Code, you can do so by following these steps:
 1. Navigate to your project's `.vscode` directory.

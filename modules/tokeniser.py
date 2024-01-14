@@ -57,7 +57,6 @@ class Tokeniser:
         )
         
         response_content = response.choices[0].message.content
-        print(response_content)
 
         if not response_content:
             raise CompilerError(f'Unable to tokenise line {line_number}: No response from API')
